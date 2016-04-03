@@ -3,19 +3,21 @@ from Player import *
 from GlobalVariables import *
 from Level_01 import *
 from Level_02 import *
+from Enemy import *
+import pdb
 
 def main():
-    """ Main Program """
     pygame.init()
 
     # Set the height and width of the screen
     size = [SCREEN_WIDTH, SCREEN_HEIGHT]
     screen = pygame.display.set_mode(size)
 
-    pygame.display.set_caption("Side-scrolling Platformer")
+    pygame.display.set_caption("niceRice")
 
     # Create the player
     player = Player()
+    enemies = pygame.sprite.Group()
 
     # Create all the levels
     level_list = []
@@ -25,10 +27,8 @@ def main():
     # Set the current level
     current_level_no = 0
     current_level = level_list[current_level_no]
-
     active_sprite_list = pygame.sprite.Group()
     player.level = current_level
-
     player.rect.x = 340
     player.rect.y = SCREEN_HEIGHT - player.rect.height
     active_sprite_list.add(player)
@@ -61,7 +61,6 @@ def main():
 
         # Update the player.
         active_sprite_list.update()
-
         # Update items in the level
         current_level.update()
 

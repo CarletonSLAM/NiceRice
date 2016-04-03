@@ -18,8 +18,7 @@ class Level_02(Level):
                  [210, 30, 850, 520],
                  [210, 30, 1120, 280],
                  [210, 50, 1120, 400],
-                 [210, 50, 1120, 520],
-                 ]
+                 [210, 50, 1120, 520]]
 
         # Go through the array above and add platforms
         for platform in level:
