@@ -7,8 +7,6 @@ class Level():
         info. """
 
     def __init__(self, player):
-        """ Constructor. Pass in a handle to player. Needed for when moving
-            platforms collide with the player. """
         self.platform_list = pygame.sprite.Group()
         self.enemy_list = pygame.sprite.Group()
         self.player = player
@@ -16,15 +14,11 @@ class Level():
         # How far this world has been scrolled left/right
         self.world_shift = 0
 
-    # Update everythign on this level
     def update(self):
-        """ Update everything in this level."""
         self.platform_list.update()
         self.enemy_list.update()
 
     def draw(self, screen):
-        """ Draw everything on this level. """
-
         # Draw the background
         screen.fill(BLUE)
 
@@ -33,9 +27,6 @@ class Level():
         self.enemy_list.draw(screen)
 
     def shift_world(self, shift_x):
-        """ When the user moves left/right and we need to scroll
-        everything: """
-
         # Keep track of the shift amount
         self.world_shift += shift_x
 

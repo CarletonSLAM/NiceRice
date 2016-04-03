@@ -1,12 +1,9 @@
 from Level import *
 from Platform import *
+from Enemy import *
 
 class Level_01(Level):
-    """ Definition for level 1. """
-
     def __init__(self, player):
-        """ Create level 1. """
-
         # Call the parent constructor
         Level.__init__(self, player)
 
@@ -24,3 +21,9 @@ class Level_01(Level):
             block.rect.y = platform[3]
             block.player = self.player
             self.platform_list.add(block)
+
+        # Add one enemies to the level
+        # Set the height and width of the screen
+        size = [SCREEN_WIDTH, SCREEN_HEIGHT]
+        screen = pygame.display.set_mode(size)
+        self.enemy_list.add(Enemy())
