@@ -1,4 +1,4 @@
-# Vikram & Hao
+# Vikram & Hao & Geoff
 Nice Rice Platformer
 
 This project was made at SLAM (http://staylateandmake.ca/)
