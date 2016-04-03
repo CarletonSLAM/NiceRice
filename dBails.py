@@ -40,3 +40,48 @@ while running:                             #The main loop that does not break un
             if event.key == (K_ESCAPE):
                 running = False
 pygame.QUIT
+
+def load_image(name):
+    fullname = os.path.join('data', name)
+    try:
+        image = pygame.image.load(fullname)
+    except pygame.error, message:
+        print 'Cannot load image:', name
+        raise SystemExit, message
+    image = image.convert()
+    return image, image.get_rect()
+
+
+class Teacher(pygame.sprite.Sprite):
+    """Teacher is moving to the end
+      returns: teacher
+      Functions: reinit, update, moveleft, moveright"""
+
+    def __int__(self,side):
+        pygame.sprite.Sprite.__init__(self)
+        self.image, self.rect = load_png('teacher.jpg')
+        screen = pygame.display.get_surface()
+        self.side = side
+        self.state = "still"
+        self.reinit()
+
+    def reinit(selfself):
+        self.state = "still"
+        self.movepos = [0]
+        if self.side == "left":
+            self.rect.midleft = self.area.midleft
+        elif self.side == "right":
+            self.rect.midright = self.area.midright
+
+    def update(self):
+        newpos = self.rect.move(self.movepos)
+        if self.area.contains(newpos):
+            self.rect = newpos
+            pygame.event.pump()
+
+    def moveleft(self):
+        self.movepos[0] = self.movepos[0] -1
+
+
+    def moveright(self):
+        self.movepos[0] = self.movepos[0] +1
